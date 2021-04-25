@@ -11,7 +11,7 @@ import (
 
 func main() {
 	topic := "job"
-	partition := 1 // 分区 TODO: 建立和 svart 集群对应的联系 etcd 配置中心
+	partition := 1 // 分区
 
 	ctx := context.TODO()
 	address := "127.0.0.1:9092"
