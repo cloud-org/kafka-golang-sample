@@ -12,3 +12,4 @@ demo for [kafka-go](https://github.com/segmentio/kafka-go)
 
 - conn
 - reader
+- writer
