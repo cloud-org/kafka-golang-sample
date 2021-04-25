@@ -30,7 +30,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	//_ = conn.SetReadDeadline(time.Now().Add(1 * time.Second))
+	//_ = conn.SetReadDeadline(time.Time{}) // 默认应该不设置就是零值
 	//time.Sleep(3 * time.Second)
 	first, err := conn.ReadFirstOffset()
 	if err != nil {
@@ -56,6 +56,7 @@ func main() {
 		message, err := conn.ReadMessage(1e6) // 如果读取不到消息，会阻塞
 		if err != nil {
 			log.Printf("read message err: %v\n", err)
+			//continue // TODO: 可以考虑重新连接
 			return
 		}
 		fmt.Printf("message Value: %s, Offset: %d, Time: %v\n", message.Value, message.Offset, message.Time)
